@@ -1,5 +1,5 @@
-import Homepage from "./Homepage";
-import Buttons from "./Browser";
+import Homepage from "./components/Homepage";
+import Buttons from "./components/Gallery";
 function App() {
   return (
     <div>

@@ -1,9 +1,8 @@
 body {
-  background-color: #AED9E0;
-  font-family: 'Raleway', sans-serif;
+  background-color: #f0dcca;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
-  color: #011627;
-  
+  color: #826251;
 }
 
 .title {
@@ -21,36 +20,26 @@ body {
 
 .buttons button {
   margin: 5px;
-  border-radius: 20%;
-  padding: 7px;
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
-  background-color: #8D6B94;
+  background-color: #6f9283;
   border-radius: 8px;
   border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
   height: 40px;
   line-height: 20px;
-  list-style: none;
-  outline: none;
   padding: 10px 16px;
   position: relative;
   text-align: center;
-  text-decoration: none;
   transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
 }
 
 .buttons button:hover {
-  background-color: #75587a;  
+  background-color: #8d9f87;
 }
 
 .beginning {
@@ -61,43 +50,44 @@ body {
 }
 
 .beginning button {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
-  background-color: #8D6B94;
+  background-color: #6f9283;
   border-radius: 8px;
   border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
   height: 40px;
   line-height: 20px;
-  list-style: none;
-  outline: none;
   padding: 10px 16px;
   position: relative;
   text-align: center;
-  text-decoration: none;
   transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
-
 }
 
 .beginning button:hover {
-  background-color: #75587a;  
+  background-color: #8d9f87;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
 }
 
 .pictures {
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
-  margin-bottom: 10vh;
-  margin-top: 15vh;
-  background-color: black;
-  height: 200px;
-  width: auto;
+  max-height: 50vh;
+  max-width: 50vw;
+  background-color: white;
+  height: 900px;
+  width: 900px;
 }
