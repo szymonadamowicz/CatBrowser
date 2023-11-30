@@ -6,20 +6,26 @@ export function useGalleryState() {
   const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [shyCatsVisible, setShyCatsVisible] = useState(false);
+  const [troublemakerCatsHidden, setTroublemakerCatsHidden] = useState(false);
 
-  const fetchData = async () => {
+  function getRandomBoolean(probability) {
+    return Math.random() < probability;
+  }
+
+  function getRandomApiUrl() {
+    const probabilityCorrect = 0.9;
+    const apiUrlCorrect = "https://api.thecatapi.com/v1/images/search";
+    const apiUrlIncorrect = "https://api.thecatapi.com/v1/imags/searh";
+    return Math.random() < probabilityCorrect ? apiUrlCorrect : apiUrlIncorrect;
+  }
+  const fetchAndSetData = async () => {
     try {
-      const probabilityCorrect = 0.9;
-      const apiUrlCorrect = "https://api.thecatapi.com/v1/images/search";
-      const apiUrlIncorrect = "https://api.thecatapi.com/v1/imags/searh";
-
-      function getRandomApiUrl() {
-        return Math.random() < probabilityCorrect
-          ? apiUrlCorrect
-          : apiUrlIncorrect;
-      }
-      const api = getRandomApiUrl();
+      setIsError(false);
       setIsLoading(true);
+
+      const api = getRandomApiUrl();
+
       const response = await axios.get(api, {
         params: {
           api_key:
@@ -27,7 +33,17 @@ export function useGalleryState() {
           limit: 50,
         },
       });
-      const photosArray = response.data;
+
+      const photosArray = response.data.map((photo) => {
+        const isShy = getRandomBoolean(0.25);
+        const isTroublemaker = getRandomBoolean(0.3);
+
+        return {
+          ...photo,
+          shy: isShy,
+          troublemaker: isTroublemaker,
+        };
+      });
 
       setPhotos(photosArray);
       setIsLoading(false);
@@ -38,13 +54,8 @@ export function useGalleryState() {
     }
   };
 
-  const refetchData = () => {
-    setIsError(false);
-    fetchData();
-  };
-
   useEffect(() => {
-    fetchData();
+    fetchAndSetData();
   }, []);
 
   return {
@@ -53,7 +64,16 @@ export function useGalleryState() {
     photos,
     isLoading,
     isError,
-    fetchData,
-    refetchData,
+    shyCatsVisible,
+    setShyCatsVisible: () => {
+      setCount(0);
+      setShyCatsVisible(!shyCatsVisible);
+    },
+    troublemakerCatsHidden,
+    setTroublemakerCatsHidden: () => {
+      setCount(0);
+      setTroublemakerCatsHidden(!troublemakerCatsHidden);
+    },
+    fetchAndSetData,
   };
 }

@@ -46,7 +46,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10vh;
+  margin-bottom: 5vh;
 }
 
 .beginning button {
@@ -126,4 +126,26 @@ p {
 
 .refresh button:hover {
   background-color: #8d9f87;
+}
+
+.button-disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.button-enabled {
+  pointer-events: unset;
+  opacity: 1;
+}
+
+.asd {
+  height: 200px;
+  width: 200px;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
